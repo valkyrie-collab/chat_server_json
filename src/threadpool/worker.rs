@@ -41,11 +41,9 @@ impl Worker {
         
         Worker { id: worker_id, worker: Some(personal_worker) }
     }
-    // pub fn get_id(&self) -> usize {
-    //     self.id
-    // }
-
-    //
+    pub fn get_id(&self) -> &usize {
+        &self.id
+    }
 
     pub fn get_worker_ownership(&mut self) -> Result<JoinHandle<()>, Error> {
 

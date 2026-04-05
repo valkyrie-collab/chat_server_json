@@ -4,8 +4,6 @@ use std::thread;
 use std::net::TcpStream;
 use std::io::{Read, Write, BufReader, StdinLock, BufRead, Error};
 use std::time::Duration;
-// use serde_json::{json, Value};
-// use chat_server_json::client_handler::Client;
 
 fn get_server_response(mut stream_reader: TcpStream) {
     let mut buffer: [u8; 2048] = [0; 2048];
@@ -43,13 +41,6 @@ fn send_server_response(mut stream_writer: TcpStream) {
 
         match line {
             Ok(msg) => {
-                // let json_msg: Value = json!({
-                //     "thread_id": 0,
-                //     "username": username,
-                //     "message": msg
-                // });
-
-                // let msg: String = json_msg.to_string();
 
                 if let Err(e) = stream_writer.write_all(msg.as_bytes()) {
                     println!("Error in sending data to server...: {}", e);

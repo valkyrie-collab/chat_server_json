@@ -38,6 +38,7 @@ impl Drop for ThreadPool {
         }
 
         for worker in &mut self.workers {
+            println!("Terminating worker with id: {}", worker.get_id());
 
             if let Ok(w) = worker.get_worker_ownership() {
                 w.join().unwrap();
